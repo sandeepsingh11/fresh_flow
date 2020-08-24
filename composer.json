@@ -1,0 +1,12 @@
+{
+    "name": "sandeep/fresh_flow",
+    "description": "A simple, fresh take on a Content Management System",
+    "type": "project",
+    "scripts": {
+        "sassy": "sass --watch public/style/main.sass:public/style/main.css public/dashboard/style/main-dash.sass:public/dashboard/style/main-dash.css"
+    },
+    "config": {
+        "process-timeout": 0
+    },
+    "require": {}
+}
