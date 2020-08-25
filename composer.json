@@ -8,5 +8,7 @@
     "config": {
         "process-timeout": 0
     },
-    "require": {}
+    "require": {
+        "nadar/quill-delta-parser": "^2.5"
+    }
 }

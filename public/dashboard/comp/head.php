@@ -15,14 +15,14 @@ function getHtmlHead($title = "Fresh Flow", $cssArr = array()) {
         <link rel="icon" href="./assets/logo.ico">
         <title><?php echo ($title) ?></title>
 
-        <link rel="stylesheet" href=<?php echo ROOT . "css/normalize.css" ?>>
+        <link rel="stylesheet" href=<?php echo ROOT . "style/normalize.css" ?>>
         <?php
 
         if (sizeof($cssArr) > 0) {
             foreach ($cssArr as $css) {
                 ?>
 
-                <link rel="stylesheet" href="<?php echo ROOT . "css/$css" ?>"></script>
+                <link rel="stylesheet" href="<?php echo ROOT . "style/$css" ?>"></script>
                 
                 <?php
             }

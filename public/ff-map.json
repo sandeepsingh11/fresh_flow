@@ -1,0 +1,9 @@
+{
+    "website_name": "Fresh Flow",
+    "home": "index.php",
+    "pages": {
+        "home": "index.php",
+        "about": "about.php",
+        "contact": "contact.php"
+    }
+}
