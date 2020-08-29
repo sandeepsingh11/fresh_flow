@@ -1,17 +1,52 @@
 <?php
+include_once("../config.php");
 
-// print_r(file_get_contents('php://input'));
-// $data = json_decode(file_get_contents('php://input'), true);
-// print_r($data);
 if (empty($_POST)) {
     header("Location: dashboard.php?err=no_post_vals");
     exit();
 }
 else {
-    print_r($_POST);
+    // print_r($_POST);
     $moduleLen = sizeof($_POST);
 
-    foreach ($_POST as $content) {
-        // HOW TO PASS VARS FROM PHP TO JS??? GOAL: INJECT HTML WITH NEW VALS
+    $updateModuleObj = ["update"=>true];
+
+    foreach ($_POST as $index => $content) {
+        if ($index === "page_name") {
+            $pageArr = [$content=>[]];
+            $currentPage = $content;
+
+            $updateModuleObj["pages"] = $pageArr;
+        }
+        else {
+            array_push($updateModuleObj["pages"][$currentPage], $content);
+        }
     }
+
+    // print_r($updateModuleObj);
+    $updateModule_JSON = json_encode($updateModuleObj);
+
+
+
+
+    // write json to file (website's /js dir)
+    $outputFile = fopen(WEBSITE_DIR . "../js/updateModule.json", "w");
+    fwrite($outputFile, $updateModule_JSON);
+    fclose($outputFile);
 }
+
+
+// JSON Structure
+// {
+//     "update": true,
+//     "pages": [
+//         "index": [
+//             0: "",
+//             1: "",
+//             2: "",
+//         ],
+//         "about": {
+//             ...
+//         }
+//     ]
+// }

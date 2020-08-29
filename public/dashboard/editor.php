@@ -31,6 +31,8 @@ $module_content = getModuleContent($page);
 <form action="./inc/ff-module-validate.php" method="post">
     <h2>Editor - <?php echo $page ?></h2>
 
+    <input type="hidden" name="page_name" value="<?php echo $page ?>">
+
     <?php
 
     foreach ($module_content as $index => $content) {

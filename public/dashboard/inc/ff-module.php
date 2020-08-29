@@ -17,8 +17,10 @@ function getModuleContent($page_name) {
             if ($posEnd = strpos($htmlStr, "</", $pos)) {
                 $substrLen = $posEnd - $pos - 1;
                 $content = substr($htmlStr, $pos + 1, $substrLen);
+
                 array_push($module_content, $content);
-                // echo $content . "-";
+
+
 
                 $index = $posEnd;
             }

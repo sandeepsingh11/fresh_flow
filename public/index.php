@@ -63,10 +63,11 @@ getHtmlHead("Fresh Flow", ["main.css"]);
 
 
     <!-- github -->
+    <div id="demo"></div>
 </main>
 
 
 
 <?php
 
-getHtmlFooter([]);
+getHtmlFooter(["ff_module.js"]);

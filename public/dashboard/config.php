@@ -1,7 +1,14 @@
 <?php
 
-// echo "doc root: " . $_SERVER["DOCUMENT_ROOT"] . "\n";
-// echo "server name: " . $_SERVER["SERVER_NAME"] . "\n";
+// PHP GLOBALS
+define("WEBSITE_DIR", "../");
+
+
+
+
+
+
+
 
 
 if ($_SERVER["SERVER_NAME"] == "localhost") {
@@ -13,8 +20,6 @@ if ($_SERVER["SERVER_NAME"] == "localhost") {
 }
 else {
     // define absolute root
-    // define("ROOT", __DIR__ . "/");
-    // define("ROOT", $_SERVER["DOCUMENT_ROOT"] . "/");
     define("ROOT", "./");
 
 
