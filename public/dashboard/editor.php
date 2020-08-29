@@ -6,77 +6,63 @@ require_once(ROOT . 'comp/footer.php');
 
 
 
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+}
 
 
-getHtmlHead("Editor | Fresh Flow", ["main-dash.css", "1.3.6_quill.snow.css"]);
 
 
 
-include_once(ROOT . 'comp/nav-dash.php')
+getHtmlHead("Editor | Fresh Flow", ["main-dash.css"]);
+
+
+
+include_once(ROOT . 'comp/nav-dash.php');
+
+
+include_once(ROOT . 'inc/ff-module.php');
+$module_content = getModuleContent($page);
 ?>
 
-<div id="editor">
+
+
+
+<form action="./inc/ff-module-validate.php" method="post">
+    <h2>Editor - <?php echo $page ?></h2>
+
     <?php
 
-    use nadar\quill\Lexer;
+    foreach ($module_content as $index => $content) {
+        ?> 
+
+        <div class="editor-container">
+            <input type="text" name="<?php echo $index ?>" id="content-<?php echo $index ?>" value="<?php echo $content ?>">
+        </div>
+
+        <?php
+    }
 
     ?>
-</div>
+
+    <input type="submit" value="Update">
+</form>
 
 
 
 
 
-<!-- Include the Quill library -->
-<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<!-- https://github.com/markedjs/marked -->
+<div id="content"></div>
 
-<!-- Initialize Quill Editor -->
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-    var toolbarOptions = [
-        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-        ['blockquote', 'code-block'],
-        [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-        ['link', 'image', 'video'],
-        [{ 'align': [] }],
-        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-        [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-
-        ['clean']
-    ];
-
-    var quill = new Quill('#editor', {
-        modules: {
-            toolbar: toolbarOptions
-        },
-        theme: 'snow'
-    });
-
-
-
-
-
-    // record content to send
-    var content_text = document.querySelector('input[name=content_text]');
-
-    var delta = quill.getContents();
-    content_text.value = JSON.stringify(quill.getContents());
-    var opsObj = JSON.parse(content_text.value); 
-
-    // and on each text change
-    quill.on('text-change', function(delta, oldDelta, source) {
-        var delta = quill.getContents();
-        // console.log(delta);
-
-        content_text.value = JSON.stringify(quill.getContents());
-        // console.log(content_text.value);
-
-        var opsObj = JSON.parse(content_text.value); 
-        // console.log(opsObj.ops);
-        // console.log(opsObj.ops[1].attributes);
-    });
-    
+    document.getElementById('content').innerHTML =
+        marked('# Marked in browser\n\nRendered by **marked**.');
 </script>
 
 <?php
