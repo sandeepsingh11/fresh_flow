@@ -14,7 +14,7 @@
         </div>
 
         <div class="nav-item">
-            <a href="<?php echo ROOT . '' ?>" class="nav-item-a">Pages</a>
+            <a href="<?php echo ROOT . 'pages.php' ?>" class="nav-item-a">Pages</a>
         </div>
 
         <div class="nav-item">

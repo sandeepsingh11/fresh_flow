@@ -32,8 +32,8 @@ $pagesArr = getCurrentPages();
         ?>
 
         <li>
-            <?php echo htmlentities($page) . ' - ' . htmlentities($filename) ?>
-            <a href="<?php echo ROOT . "editor.php?page=" . rtrim($filename, ".php") ?>"><?php echo $filename ?></a>
+            <?php echo htmlentities($filename) ?>
+            <a href="<?php echo ROOT . "editor.php?page=" . rtrim($filename, ".php") ?>">Edit</a>
         </li>
 
         <?php

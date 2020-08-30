@@ -9,6 +9,10 @@ require_once(ROOT . 'comp/footer.php');
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
 }
+else {
+    header("Location: ./dashboard.php");
+    exit();
+}
 
 
 

@@ -24,7 +24,7 @@ else {
     }
 
     // print_r($updateModuleObj);
-    $updateModule_JSON = json_encode($updateModuleObj);
+    $updateModule_JSON = json_encode($updateModuleObj, JSON_PRETTY_PRINT);
 
 
 
